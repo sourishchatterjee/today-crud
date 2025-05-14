@@ -6,11 +6,6 @@ const teacherSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
-    // isdeleted: {
-    //   type: Boolean,
-    //   default: false,
-    // },
   },
   {
     versionKey: false,
@@ -18,4 +13,4 @@ const teacherSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("teacher", teacherSchema);
+module.exports = mongoose.model("Teacher", teacherSchema);

@@ -1,50 +1,30 @@
 const teacherModel = require("../model/teacher");
 
 class teacherRepositories {
+
+  // Create a new teacher
   createTeacher = async (data) => {
     try {
-      const newteacher = teacherModel(data);
-      await newteacher.save();
-      
+      // data should be an object, e.g. { name: 'Alice' }
+      const newTeacher = new teacherModel(data);
+      await newTeacher.save();
+      return newTeacher;
     } catch (error) {
-      console.error( error);
+      console.error("Error creating teacher:", error);
+      throw error;
     }
   };
 
-
-   readTeacher = async () => {
-  try {
-    const teacherusers = await teacherModel.find();
-    return teacherusers;
-  } catch (error) {
-    console.log(error);
-    
-  }
-};
-
-//    updateUser = async (id, updatedData) => {
-//   try {
-//     const updatedUser = await userModel.findByIdAndUpdate(id, updatedData, {
-//       new: true,
-//     });
-//     return updatedUser;
-//   } catch (error) {
-//     console.log(error)
-//   }
-// };
-
-
-// deleteUser = async (id) => {
-//   try {
-//     const deleteUser = await userModel.findByIdAndDelete(id);
-//     return deleteUser;
-//   } catch (error) {
-//   console.log(error)
-//   }
-// };
-
-
-
+  // Read all teachers
+  readTeacher = async () => {
+    try {
+      const teacherUsers = await teacherModel.find();
+      return teacherUsers;
+    } catch (error) {
+      console.error("Error reading teachers:", error);
+      throw error;
+    }
+  };
 }
 
 module.exports = new teacherRepositories();

@@ -1,5 +1,6 @@
 const userModel= require('../model/user')
 const userRepositories= require("../repositories/repositories")
+const teacherModel= require("../model/teacher")
 
 class Crud {
   home = async (req, res) => {
@@ -12,10 +13,7 @@ class Crud {
 
   const createdUser = await userRepositories.createStudent({ name, email, gender,teacher });
      res.redirect("/read");
-    // res.status(200).json({
-    //   message: "User created successfully",
-    //   user: createdUser, 
-    // });
+    
   } catch (error) {
     res.status(500).json({
       message: "Something went wrong",
@@ -25,25 +23,23 @@ class Crud {
 };
 
 
-  // create = async (req, res) => {
+  // read = async (req, res) => {
   //   try {
-  //     let { name, email, gender } = req.body;
-  //     await userModel.create({ name, email, gender });
-  //     res.redirect("/read");
+      
+  //     let allusers= await userRepositories.readUsers()
+  //     res.render("read", { users: allusers });
   //   } catch (err) {
   //     res.status(500).send(err.message);
   //   }
   // };
-
-  read = async (req, res) => {
-    try {
-      //let allusers = await userModel.find();
-      let allusers= await userRepositories.readUsers()
-      res.render("read", { users: allusers });
-    } catch (err) {
-      res.status(500).send(err.message);
-    }
-  };
+read = async (req, res) => {
+  try {
+    const allUsers = await userRepositories.readUsersWithTeacher();
+    res.render("read", { users: allUsers });
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
 
 
   edit = async (req, res) => {
@@ -60,19 +56,6 @@ class Crud {
   };
 
 
-  // updated = async (req, res) => {
-  //   try {
-  //     let { name, email, gender } = req.body;
-  //     await userModel.findOneAndUpdate(
-  //       { _id: req.params.id },
-  //       { name, email, gender },
-  //       { new: true }
-  //     );
-  //     res.redirect("/read");
-  //   } catch (err) {
-  //     res.status(500).send(err.message);
-  //   }
-  // };
 
    updated = async (req, res) => {
   try {
@@ -106,6 +89,9 @@ class Crud {
       res.status(500).send(err.message);
     }
   };
+
+
+
 }
 
 module.exports= new Crud()

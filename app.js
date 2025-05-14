@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use('/',router)
-app.use('/',teacherRouter)
+app.use('/teacher',teacherRouter)
 // app.get("/", function (req, res) {
 //   res.render("index");
 // });

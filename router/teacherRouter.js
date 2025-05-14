@@ -1,11 +1,13 @@
 const express = require('express');
 const teacherRouter = express.Router();
 
-const teacherRepositories= require("../controller/teacher.controller")
+const teacherCrud= require("../controller/teacher.controller")
 
-teacherRouter.get('/addteacher',teacherRepositories.home)
-teacherRouter.post('/createteacher', teacherRepositories.createTeacher);
-teacherRouter.get('/allteacher',teacherRepositories.read)
+teacherRouter.get('/addteacher',teacherCrud.homePage)
+
+teacherRouter.post('/createteacher', teacherCrud.createTeacher);
+
+teacherRouter.get('/allteacher',teacherCrud.allteachers)
 
 
 

@@ -4,14 +4,13 @@
 <body>
   <a href="/">← Return to Home</a>
   <h1>All Teachers</h1>
-  <div class="teachers">
-    <% if (teachers.length) { %>
-      <% teachers.forEach(t => { %>
-        … your card markup …
-      <% }) %>
-    <% } else { %>
-      <p>No teachers found.</p>
-    <% } %>
-  </div>
+  <% if (allTeachers && allTeachers.length) { %>
+  <% allTeachers.forEach(t => { %>
+    <h2><%= t.name %></h2>
+  <% }) %>
+<% } else { %>
+  <p>No teachers found.</p>
+<% } %>
+
 </body>
 </html>

@@ -10,14 +10,30 @@
   <body>
     <div class="w-full h-full bg-zinc-900 p-10 text-white">
       <div class="nav mb-10">
-        <a class="text-blue-600" href="/read">Read users</a>
+        <a class="text-blue-600" href="/teacher/allteacher">
+  ← View All Teachers
+</a>
+
       </div>
       <h1 class="text-xl font-semibold mb-4 text-center">Create Teacher</h1>
 
-      <form action="/create" method="post" class="flex flex-col gap-3">
-        <input class="px-5 py-2" placeholder="Name" name="name" />
-        <input class="btn" type="submit" value="Create User" />
-      </form>
+    
+
+      <form action="/teacher/createteacher" method="post" class="flex flex-col gap-3">
+  <input
+    type="text"
+    name="name"
+    placeholder="Name"
+    class="px-5 py-2 text-black"
+  />
+  <input
+    type="submit"
+    value="Create Teacher"
+    class="btn bg-blue-600 text-white"
+  />
+</form>
+
+
     </div>
   </body>
 </html>
