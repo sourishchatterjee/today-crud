@@ -3,7 +3,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const connectDB= require('./db/db');
-const router = require('./router/router')
+const router = require('./router/router');
+const teacherRouter =require('./router/teacherRouter')
 
 app.set("view engine", "ejs");
 
@@ -13,6 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use('/',router)
+app.use('/',teacherRouter)
 // app.get("/", function (req, res) {
 //   res.render("index");
 // });

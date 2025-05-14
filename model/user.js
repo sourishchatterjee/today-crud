@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const teacher = require('./teacher');
 
 const userSchema =new  mongoose.Schema({
     name:{
@@ -13,6 +14,11 @@ const userSchema =new  mongoose.Schema({
         type:String,
         require: true,
     },
+    teacher: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'teacher',
+   
+},
 })
 
 module.exports = mongoose.model("user",userSchema);

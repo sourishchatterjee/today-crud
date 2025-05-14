@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> … </head>
+<body>
+  <a href="/">← Return to Home</a>
+  <h1>All Teachers</h1>
+  <div class="teachers">
+    <% if (teachers.length) { %>
+      <% teachers.forEach(t => { %>
+        … your card markup …
+      <% }) %>
+    <% } else { %>
+      <p>No teachers found.</p>
+    <% } %>
+  </div>
+</body>
+</html>
